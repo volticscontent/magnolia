@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Cormorant_Garamond, Philosopher } from "next/font/google";
-import "@/app/globals.css";
-import { Header } from "@/components/layout/header";
+import "./globals.css";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -36,7 +35,6 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${cormorant.variable} ${philosopher.variable} antialiased`}
       >
-        <Header />
         {children}
       </body>
     </html>

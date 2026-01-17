@@ -61,7 +61,7 @@ export async function Massages() {
   const massages = sanityMassages.length > 0 ? sanityMassages : FALLBACK_MASSAGES
 
   return (
-    <section className="py-24 bg-[#ffffff]">
+    <section className="py-8 bg-[#ffffff]">
       <div className="container mx-auto px-6">
         <FadeIn className="text-center mb-16">
           <p className="text-xs font-medium uppercase tracking-luxury text-gold mb-3">

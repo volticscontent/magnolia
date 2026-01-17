@@ -86,7 +86,7 @@ export default async function MassagesPage() {
               </div>
               
               <div className="p-8">
-                <h3 className="text-2xl font-serif text-slate-900 mb-3 group-hover:text-gold transition-colors duration-300">
+                <h3 className="text-2xl font- serif text-slate-900 mb-3 group-hover:text-gold transition-colors duration-300">
                   {massage.title}
                 </h3>
                 <p className="text-slate-700 mb-6 leading-relaxed text-sm line-clamp-3">

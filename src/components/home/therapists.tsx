@@ -70,7 +70,7 @@ export async function Therapists() {
                 </div>
                 <div className="text-center transform transition-transform duration-500 group-hover:-translate-y-2">
                     <h3 className="text-3xl font-philosopher text-slate-900 mb-2">{therapist.name}</h3>
-                    <p className="text-xs uppercase tracking-luxury text-gold font-medium">
+                    <p className="text-xs uppercase tracking-luxury text-[#dabe65] font-medium">
                       {therapist.specialties ? therapist.specialties.join(" • ") : ""}
                     </p>
                 </div>
