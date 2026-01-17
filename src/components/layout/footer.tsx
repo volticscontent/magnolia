@@ -31,26 +31,6 @@ export function Footer() {
               <li><Link href="/massagens" className="hover:text-gold-light transition-colors">Massagens</Link></li>
               <li><Link href="/terapeutas" className="hover:text-gold-light transition-colors">Terapeutas</Link></li>
               <li><Link href="/sobre" className="hover:text-gold-light transition-colors">O Espaço</Link></li>
-              <li><Link href="/contato" className="hover:text-gold-light transition-colors">Contato</Link></li>
-            </ul>
-          </FadeInItem>
-
-          {/* Contact */}
-          <FadeInItem>
-            <h4 className="text-white font-philosopher text-lg mb-6">Contato</h4>
-            <ul className="space-y-4 text-sm text-white">
-              <li className="flex items-start gap-3">
-                <Phone className="h-5 w-5 text-gold-light shrink-0" />
-                <span>+351 962 252 659</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="h-5 w-5 text-gold-light shrink-0" />
-                <span>contato@magnolialunar.com</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-gold-light shrink-0" />
-                <span>Lisboa, Portugal<br/>(Morada completa após agendamento)</span>
-              </li>
             </ul>
           </FadeInItem>
 

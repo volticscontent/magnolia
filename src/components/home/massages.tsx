@@ -61,7 +61,7 @@ export async function Massages() {
   const massages = sanityMassages.length > 0 ? sanityMassages : FALLBACK_MASSAGES
 
   return (
-    <section className="py-24 bg-[#fff7d3]">
+    <section className="py-24 bg-[#ffffff]">
       <div className="container mx-auto px-6">
         <FadeIn className="text-center mb-16">
           <p className="text-xs font-medium uppercase tracking-luxury text-gold mb-3">
@@ -89,7 +89,7 @@ export async function Massages() {
                 </div>
                 
                 <div className="p-10">
-                  <h3 className="text-3xl font-serif text-slate-900 mb-4 group-hover:text-gold transition-colors duration-300">
+                  <h3 className="text-3xl font-philosopher text-slate-900 mb-4 group-hover:text-gold transition-colors duration-300">
                     {massage.title}
                   </h3>
                   <p className="text-slate-700 mb-8 leading-relaxed text-lg">

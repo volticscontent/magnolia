@@ -2,7 +2,7 @@ import { FadeIn } from "@/components/ui/motion"
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center text-white">
+    <section className="relative flex h-[calc(100vh-120px)] flex-col items-center justify-center px-6 text-center text-white">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
@@ -23,10 +23,10 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-2xl space-y-10">
         <FadeIn className="space-y-6" delay={0.2} duration={1.0}>
-            <p className="text-xs md:text-sm font-bold tracking-luxury text-gold-light drop-shadow-md">
+            <p className="text-xs md:text-sm font-philosopher font-bold tracking-luxury text-[#dabe65] drop-shadow-md">
             MAGNOLIA LUNAR • LISBOA
             </p>
-            <h1 className="text-5xl md:text-7xl font-serif font-medium leading-tight drop-shadow-lg text-balance !text-white">
+            <h1 className="text-5xl md:text-7xl font-philosopher font-medium uppercase leading-tight drop-shadow-lg text-balance">
             Um refúgio para<br/>os seus sentidos
             </h1>
         </FadeIn>

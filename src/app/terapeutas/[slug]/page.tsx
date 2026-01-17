@@ -14,7 +14,7 @@ async function getTherapist(slug: string) {
     image,
     gallery,
     bio,
-    phone,
+      phone,
     slug
   }`
   const data = await client.fetch(query, { slug })
@@ -74,7 +74,7 @@ function TherapistDetailView({ therapist }: { therapist: any }) {
             </div>
 
             <div className="p-6 bg-slate-50 border border-slate-100 rounded-sm">
-                <h4 className="font-serif text-slate-900 mb-4">Agende com {therapist.name}</h4>
+                <h4 className="font-philosopher text-slate-900 mb-4">Agende com {therapist.name}</h4>
                 <a 
                   href={`https://wa.me/${therapist.phone?.replace(/\D/g, '') || '351962252659'}?text=${encodeURIComponent(`Olá, gostaria de saber a disponibilidade de ${therapist.name}`)}`}
                   target="_blank"

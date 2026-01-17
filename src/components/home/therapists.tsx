@@ -32,7 +32,7 @@ export async function Therapists() {
   }
 
   return (
-    <section className="py-24 bg-white text-slate-900 overflow-hidden">
+    <section className="py-8 bg-white text-slate-900 overflow-hidden">
       <FadeIn className="container mx-auto px-6 mb-16 text-center">
         <p className="text-xs font-medium uppercase tracking-luxury text-gold mb-3">
             EQUIPA
