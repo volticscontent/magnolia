@@ -19,7 +19,7 @@ async function getTherapist(slug: string) {
         phone,
       slug
     }`
-    const data = await client.fetch(query, { slug }, { next: { revalidate: 0 } })
+    const data = await client.fetch(query, { slug })
     return data
   } catch (error) {
     return null
@@ -29,7 +29,7 @@ async function getTherapist(slug: string) {
 export async function generateStaticParams() {
   try {
     const query = `*[_type == "therapist"]{ "slug": slug.current }`
-    const slugs = await client.fetch(query, {}, { next: { revalidate: 0 } })
+    const slugs = await client.fetch(query)
     return slugs.map((item: any) => ({ slug: item.slug }))
   } catch (error) {
     return FALLBACK_THERAPISTS.map(item => ({ slug: item.slug.current }))

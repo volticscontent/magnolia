@@ -52,7 +52,7 @@ async function getMassages() {
       image
     }
   }`
-  const data = await client.fetch(query, {}, { next: { revalidate: 0 } })
+  const data = await client.fetch(query)
   return data
 }
 

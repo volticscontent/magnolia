@@ -14,7 +14,7 @@ async function getTherapists() {
       image,
       slug
     }`
-    const data = await client.fetch(query, {}, { next: { revalidate: 0 } })
+    const data = await client.fetch(query)
     return data
   } catch (error) {
     console.error("Failed to fetch therapists:", error)

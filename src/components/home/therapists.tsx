@@ -23,9 +23,7 @@ async function getTherapists() {
         "specialties": specialties[]->title,
         image,
         slug
-      }`,
-      {},
-      { next: { revalidate: 0 } }
+      }`
     )
     return data
   } catch (error) {
