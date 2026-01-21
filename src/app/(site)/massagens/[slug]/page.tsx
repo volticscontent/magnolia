@@ -23,7 +23,7 @@ async function getMassage(slug: string) {
     }
   }`
   // Disable cache to ensure we get fresh data including references
-  const data = await client.fetch(query, { slug })
+  const data = await client.fetch(query, { slug }, { next: { revalidate: 0 } })
   return data
 }
 
