@@ -34,8 +34,8 @@ export async function Therapists() {
 
   return (
     <section className="py-8 bg-linear-to-b from-black to-white text-white overflow-hidden">
-      <FadeIn className="container mx-auto px-6 mb-16 text-center">
-        <p className="text-xs font-medium uppercase tracking-luxury text-gold mb-3">
+      <FadeIn className="container mx-auto px-6 mb-16 text-center"> 
+        <p className="text-xs font-medium uppercase tracking-luxury text-[#ebc34c] text-shadow-gold-light mb-3">
             EQUIPA
         </p>
         <h2 className="text-4xl md:text-5xl font-philosopher mb-6 text-white">
@@ -69,7 +69,7 @@ export async function Therapists() {
                   )}
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                 </div>
-                <div className="text-center transform transition-transform duration-500 group-hover:-translate-y-2">
+                <div className="text-center transform p-2 border-t border-white bg-black/50 rounded-b-lg transition-transform duration-500 group-hover:-translate-y-2">
                     <h3 className="text-3xl font-philosopher text-white mb-2">{therapist.name}</h3>
                     <p className="text-xs uppercase tracking-luxury text-[#ffffff] font-medium">
                       {therapist.specialties ? therapist.specialties.join(" • ") : ""}
@@ -85,7 +85,7 @@ export async function Therapists() {
       </FadeInStagger>
       
       <FadeIn className="text-center mt-4 md:hidden animate-pulse">
-        <p className="text-[10px] text-slate-400 uppercase tracking-luxury">Deslize para ver mais</p>
+        <p className="text-[10px] text-[#000000] uppercase tracking-luxury">Deslize para ver mais</p>
       </FadeIn>
 
       <div className="text-center mt-12">

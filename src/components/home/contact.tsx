@@ -4,7 +4,7 @@ import { FadeIn } from "@/components/ui/motion"
 
 export function Contact() {
   return (
-    <section className="relative py-24 bg-slate-900 text-white overflow-hidden">
+    <section className="relative py-24 bg-black text-white overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />

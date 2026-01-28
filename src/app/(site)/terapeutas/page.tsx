@@ -23,7 +23,7 @@ export default async function TherapistsPage() {
     <main className="pt-32 pb-24 bg-white min-h-screen">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <p className="text-xs font-medium uppercase tracking-luxury text-gold mb-3">
+          <p className="text-xs font-medium uppercase tracking-luxury text-[#f1ce59] mb-3">
             NOSSA EQUIPA
           </p>
           <h1 className="text-4xl md:text-5xl font-serif text-slate-900">

@@ -64,7 +64,7 @@ export default async function MassagesPage() {
     <main className="pt-32 bg-[#ffd7f042] min-h-screen">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <p className="text-xs font-medium uppercase tracking-luxury text-gold mb-3">
+          <p className="text-xs font-medium uppercase tracking-luxury text-[#f1ce59] mb-3">
             NOSSOS SERVIÇOS
           </p>
           <h1 className="text-4xl md:text-5xl font-serif text-slate-900">
