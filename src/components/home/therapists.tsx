@@ -10,7 +10,7 @@ interface Therapist {
   _id: string
   name: string
   specialties: string[]
-  image?: SanityImage
+  image?: SanityImage | null
   slug: { current: string }
   fallbackImage?: string
 }
