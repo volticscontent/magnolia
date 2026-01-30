@@ -1,5 +1,4 @@
-import Link from "next/link"
-import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react"
+import { MapPin, Phone, Mail, ArrowRight, Clock } from "lucide-react"
 import { FadeIn } from "@/components/ui/motion"
 
 export function Contact() {
@@ -17,11 +16,11 @@ export function Contact() {
           {/* Text Content */}
           <FadeIn className="space-y-10">
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-gold mb-4">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#f1ce59] text-shadow-gold-light mb-4">
                 Entre em Contato
               </p>
               <h2 className="text-4xl md:text-5xl font-philosopher leading-tight mb-6">
-                Agende seu momento de <span className="text-gold italic">paz</span>
+                Agende seu momento de <span className="text-[#f1ce59] italic">paz</span>
               </h2>
               <p className="text-slate-300 text-lg leading-relaxed max-w-md">
                 Estamos prontos para recebê-lo em nosso santuário. Tire suas dúvidas ou agende sua visita pelo WhatsApp ou telefone.
@@ -30,11 +29,11 @@ export function Contact() {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4 p-4 rounded-sm hover:bg-white/5 transition-colors border border-transparent hover:border-white/10">
-                <div className="bg-gold/10 p-3 rounded-full text-gold">
+                <div className="bg-[#f1ce59]/10 p-3 rounded-full text-[#f1ce59]">
                   <MapPin className="h-6 w-6" />
                 </div>
                 <div>
-                  <h4 className="font-philosopher text-xl mb-1">Localização</h4>
+                  <h4 className="font-philosopher text-xl mb-1 text-[#000000]">Localização</h4>
                   <p className="text-slate-400">Lisboa, Portugal</p>
                   <p className="text-xs text-slate-500 mt-1">Endereço completo enviado após confirmação</p>
                 </div>
@@ -52,7 +51,7 @@ export function Contact() {
               </div>
 
               <div className="flex items-start gap-4 p-4 rounded-sm hover:bg-white/5 transition-colors border border-transparent hover:border-white/10">
-                <div className="bg-gold/10 p-3 rounded-full text-gold">
+                <div className="bg-[#f1ce59]/10 p-3 rounded-full text-[#f1ce59]">
                   <Mail className="h-6 w-6" />
                 </div>
                 <div>

@@ -11,6 +11,7 @@ export function Hero() {
           loop
           playsInline
           className="h-full w-full object-cover"
+          suppressHydrationWarning
         >
           <source src="/video_hero.mp4" type="video/mp4" />
           Seu navegador não suporta o elemento de vídeo.

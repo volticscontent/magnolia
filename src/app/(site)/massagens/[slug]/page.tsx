@@ -4,6 +4,29 @@ import { notFound } from "next/navigation"
 import { ArrowLeft, Clock, Tag } from "lucide-react"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
+import type { Image as SanityImage } from "sanity"
+
+export const revalidate = 60; // Revalidate every 60 seconds
+
+interface TherapistRef {
+  _id: string
+  name: string
+  slug: { current: string }
+  image?: SanityImage | null
+  specialties?: string[]
+}
+
+interface Massage {
+  _id: string
+  title: string
+  description: string
+  image?: SanityImage | null
+  duration?: string
+  price?: string | number
+  slug: { current: string }
+  therapists?: TherapistRef[]
+  fallbackImage?: string
+}
 
 async function getMassage(slug: string) {
   const query = `*[_type == "massage" && slug.current == $slug][0] {
@@ -23,14 +46,14 @@ async function getMassage(slug: string) {
     }
   }`
   // Disable cache to ensure we get fresh data including references
-  const data = await client.fetch(query, { slug })
+  const data = await client.fetch<Massage>(query, { slug })
   return data
 }
 
 export async function generateStaticParams() {
   const query = `*[_type == "massage"]{ "slug": slug.current }`
-  const slugs = await client.fetch(query)
-  return slugs.map((item: any) => ({ slug: item.slug }))
+  const slugs = await client.fetch<{ slug: string }[]>(query)
+  return slugs.map((item) => ({ slug: item.slug }))
 }
 
 export default async function MassageDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -99,7 +122,7 @@ export default async function MassageDetailsPage({ params }: { params: Promise<{
      ].find(m => m.slug === slug)
 
      if (fallback) {
-        return <MassageDetailView massage={{...fallback, image: null, fallbackImage: fallback.image}} />
+        return <MassageDetailView massage={{...fallback, image: null, fallbackImage: fallback.image} as unknown as Massage} />
      }
 
      return notFound()
@@ -108,7 +131,7 @@ export default async function MassageDetailsPage({ params }: { params: Promise<{
   return <MassageDetailView massage={massage} />
 }
 
-function MassageDetailView({ massage }: { massage: any }) {
+function MassageDetailView({ massage }: { massage: Massage }) {
   const imageUrl = massage.image ? urlFor(massage.image).url() : massage.fallbackImage
 
   return (
@@ -172,7 +195,7 @@ function MassageDetailView({ massage }: { massage: any }) {
           <div className="mt-24">
             <h2 className="text-3xl font-serif text-slate-900 mb-12 text-center">Terapeutas Especializadas</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {massage.therapists.map((therapist: any) => (
+              {massage.therapists.map((therapist: TherapistRef) => (
                 <Link key={therapist._id} href={`/terapeutas/${therapist.slug.current}`} className="group block">
                   <div className="relative h-[400px] w-full overflow-hidden rounded-sm mb-4">
                     {therapist.image && (

@@ -3,8 +3,29 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
+import type { Image as SanityImage } from "sanity"
 
-const FALLBACK_MASSAGES = [
+export const revalidate = 60; // Revalidate every 60 seconds
+
+const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop"
+
+interface TherapistRef {
+  _id: string
+  name: string
+  image?: SanityImage | null
+}
+
+interface Massage {
+  _id: string
+  title: string
+  description: string
+  image?: SanityImage | null
+  slug: { current: string }
+  therapists?: TherapistRef[]
+  fallbackImage?: string
+}
+
+const FALLBACK_MASSAGES: Massage[] = [
   {
     _id: "1",
     title: "Massagem Tântrica",
@@ -52,7 +73,7 @@ async function getMassages() {
       image
     }
   }`
-  const data = await client.fetch(query)
+  const data = await client.fetch<Massage[]>(query)
   return data
 }
 
@@ -73,11 +94,11 @@ export default async function MassagesPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {massages.map((massage: any) => (
+          {massages.map((massage: Massage) => (
             <div key={massage._id} className="group relative overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
               <div className="relative h-64 w-full overflow-hidden">
                 <Image
-                  src={massage.image ? urlFor(massage.image).url() : massage.fallbackImage}
+                  src={(massage.image ? urlFor(massage.image).url() : massage.fallbackImage) || DEFAULT_IMAGE}
                   alt={massage.title}
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -103,7 +124,7 @@ export default async function MassagesPage() {
                   <div className="mt-6 pt-6 border-t border-slate-100">
                     <p className="text-xs text-slate-500 mb-2">Disponível com:</p>
                     <div className="flex -space-x-2">
-                      {massage.therapists.slice(0, 4).map((therapist: any) => (
+                      {massage.therapists.slice(0, 4).map((therapist: TherapistRef) => (
                         <div key={therapist._id} className="relative w-8 h-8 rounded-full border-2 border-white overflow-hidden" title={therapist.name}>
                           {therapist.image ? (
                             <Image 

@@ -4,6 +4,9 @@ import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/motion"
 import { Calendar, Sparkles, UserCheck, ArrowRight } from "lucide-react"
+import type { Image as SanityImage } from "sanity"
+
+export const revalidate = 60; // Revalidate every 60 seconds
 
 import { FALLBACK_THERAPISTS } from "@/data/fallback-data"
 
@@ -11,7 +14,7 @@ interface Therapist {
   _id: string
   name: string
   specialties: string[]
-  image: any
+  image?: SanityImage | null
   slug: { current: string }
   fallbackImage?: string
 }
@@ -163,7 +166,7 @@ export default async function AboutPage() {
         </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {therapists.map((therapist: any) => {
+          {therapists.map((therapist: Therapist) => {
             const imageUrl = therapist.image ? urlFor(therapist.image).width(600).height(840).url() : (therapist.fallbackImage || '')
             return (
               <FadeIn key={therapist._id} className="group cursor-pointer">

@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react"
+import { Facebook, Instagram } from "lucide-react"
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/motion"
 
 export function Footer() {

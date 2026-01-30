@@ -1,9 +1,20 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { FALLBACK_THERAPISTS } from "@/data/fallback-data"
+import type { Image as SanityImage } from "sanity"
+
+export const revalidate = 60; // Revalidate every 60 seconds
+
+interface Therapist {
+  _id: string
+  name: string
+  specialties: string[]
+  image?: SanityImage | null
+  slug: { current: string }
+  fallbackImage?: string
+}
 
 async function getTherapists() {
   try {
@@ -14,7 +25,7 @@ async function getTherapists() {
       image,
       slug
     }`
-    const data = await client.fetch(query)
+    const data = await client.fetch<Therapist[]>(query)
     return data
   } catch (error) {
     console.error("Failed to fetch therapists:", error)
@@ -44,7 +55,7 @@ export default async function TherapistsPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {therapists.map((therapist: any) => {
+            {therapists.map((therapist: Therapist) => {
               const imageUrl = therapist.image ? urlFor(therapist.image).url() : (therapist.fallbackImage || null)
               
               if (!imageUrl) return null

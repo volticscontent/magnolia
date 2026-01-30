@@ -5,6 +5,8 @@ import { About } from "@/components/home/about";
 import { Reviews } from "@/components/home/reviews";
 import { Contact } from "@/components/home/contact";
 
+export const revalidate = 60; // Revalidate every 60 seconds
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">

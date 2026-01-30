@@ -4,8 +4,18 @@ import { ArrowRight } from "lucide-react"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/motion"
+import type { Image as SanityImage } from "sanity"
 
-const FALLBACK_MASSAGES = [
+interface Massage {
+  _id: string
+  title: string
+  description: string
+  image?: SanityImage | null
+  slug: { current: string }
+  fallbackImage?: string
+}
+
+const FALLBACK_MASSAGES: Massage[] = [
   {
     _id: "1",
     title: "Massagem Tântrica",
@@ -48,7 +58,7 @@ async function getMassages() {
     image,
     slug
   }`
-  const data = await client.fetch(query)
+  const data = await client.fetch<Massage[]>(query)
   return data
 }
 
@@ -64,16 +74,16 @@ export async function Massages() {
     <section className="py-8 bg-[#ffffff]">
       <div className="container mx-auto px-6">
         <FadeIn className="text-center mb-16">
-          <p className="text-xs font-medium uppercase tracking-luxury text-gold mb-3">
+          <p className="text-xs font-medium uppercase tracking-luxury text-[#f1ce59] text-shadow-gold-light mb-3">
             NOSSOS SERVIÇOS
           </p>
-          <h2 className="text-4xl md:text-5xl font-philosopher text-white">
+          <h2 className="text-4xl md:text-5xl font-philosopher text-[#000000]">
             Experiências Sensoriais
           </h2>
         </FadeIn>
 
         <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {massages.map((massage: any) => {
+          {massages.map((massage: Massage) => {
              const imageUrl = massage.image ? urlFor(massage.image).url() : (massage.fallbackImage || PLACEHOLDER_IMAGE)
              
              return (

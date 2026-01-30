@@ -41,7 +41,7 @@ export function Reviews() {
                 ))}
               </div>
               <p className="text-slate-000 mb-6 leading-relaxed italic">
-                "{review.text}"
+                &quot;{review.text}&quot;
               </p>
               <p className="font-philosopher text-lg text-slate-900">
                 {review.name}
